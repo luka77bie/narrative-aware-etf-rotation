@@ -1,1 +1,22 @@
-ticker,name,exchange,primary_theme,secondary_theme,style,benchmark_index,inception_date,active_from,active_to,min_history_days,include
+ticker,name,exchange,primary_theme,secondary_theme,style,benchmark_index,inception_date,active_from,active_to,min_history_days,include,observations,data_status
+512100,中证1000ETF南方,SSE,Broad Market,CSI 1000,Core,中证1000指数,2016-11-04,2016-11-04,,252,True,2351,AVAILABLE
+510300,沪深300ETF华泰柏瑞,SSE,Broad Market,CSI 300,Core,沪深300指数,2012-05-28,2012-05-28,,252,True,3432,AVAILABLE
+510500,中证500ETF南方,SSE,Broad Market,CSI 500,Core,中证500指数,2013-03-15,2013-03-15,,252,True,3235,AVAILABLE
+159915,创业板ETF易方达,SZSE,Broad Market,ChiNext,Core,创业板指数,2011-12-09,2011-12-09,,252,True,3540,AVAILABLE
+588000,科创50ETF华夏,SSE,Broad Market,STAR 50,Core,上证科创板50成份指数,2020-11-16,2020-11-16,,252,True,1371,AVAILABLE
+159001,货币ETF易方达,SZSE,Cash Fixed Income,Money Market,Cash,货币市场工具,2014-10-20,2014-10-20,,252,True,2851,AVAILABLE
+515220,煤炭ETF国泰,SSE,Commodity Cyclical,Coal,Cyclical,煤炭主题指数,2020-03-02,2020-03-02,,252,True,1544,AVAILABLE
+518880,黄金ETF华安,SSE,Commodity Cyclical,Gold,Cyclical,黄金现货合约,2013-07-29,2013-07-29,,252,True,3149,AVAILABLE
+512400,有色金属ETF南方,SSE,Commodity Cyclical,Nonferrous Metals,Cyclical,有色金属主题指数,2017-09-01,2017-09-01,,252,True,2148,AVAILABLE
+516150,稀土ETF嘉实,SSE,Commodity Cyclical,Rare Earth,Cyclical,稀土产业主题指数,2021-03-17,2021-03-17,,252,True,1290,AVAILABLE
+512800,银行ETF华宝,SSE,Defensive Value,Bank,Defensive,银行主题指数,2017-08-03,2017-08-03,,252,True,2169,AVAILABLE
+510880,红利ETF华泰柏瑞,SSE,Defensive Value,Dividend,Defensive,红利主题指数,2007-01-18,2007-01-18,,252,True,4733,AVAILABLE
+512890,红利低波ETF华泰柏瑞,SSE,Defensive Value,Low Volatility,Defensive,红利低波指数,2019-01-18,2019-01-18,,252,True,1811,AVAILABLE
+159611,电力ETF广发,SZSE,Defensive Value,Power Utilities,Defensive,电力及公用事业主题指数,2022-01-07,2022-01-07,,252,True,1091,AVAILABLE
+159732,消费电子ETF华夏,SZSE,Healthcare Consumer,Consumer,Defensive,消费主题指数,2021-08-23,2021-08-23,,252,True,1182,AVAILABLE
+512170,医疗ETF华宝,SSE,Healthcare Consumer,Healthcare,Defensive,医疗健康主题指数,2019-06-17,2019-06-17,,252,True,1715,AVAILABLE
+159363,创业板人工智能ETF华宝,SZSE,Technology,Artificial Intelligence,Growth,人工智能主题指数,2024-12-16,2024-12-16,,252,True,380,AVAILABLE
+515880,通信ETF国泰,SSE,Technology,Communication,Growth,通信主题指数,2019-09-06,2019-09-06,,252,True,1657,AVAILABLE
+159998,计算机ETF天弘,SZSE,Technology,Computer,Growth,计算机主题指数,2020-04-13,2020-04-13,,252,True,1515,AVAILABLE
+159530,机器人ETF易方达,SZSE,Technology,Robot,Growth,机器人主题指数,2024-01-18,2024-01-18,,252,True,598,AVAILABLE
+159516,半导体设备ETF国泰,SZSE,Technology,Semiconductor,Growth,半导体主题指数,2023-07-27,2023-07-27,,252,True,716,AVAILABLE

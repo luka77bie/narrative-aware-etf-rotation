@@ -1,0 +1,106 @@
+exposure,primary_theme,ticker,name,turnover,candidate_rank,selected,review_status,review_notes
+CSI 300,Broad Market,510300,沪深300ETF华泰柏瑞,4537384315.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+CSI 300,Broad Market,159919,沪深300ETF嘉实,1069426409.344,2.0,False,PENDING,
+CSI 300,Broad Market,510310,沪深300ETF易方达,847590459.0,3.0,False,PENDING,
+CSI 300,Broad Market,510330,沪深300ETF华夏,499360040.0,4.0,False,PENDING,
+CSI 300,Broad Market,159300,沪深300ETF富国,399838341.9,5.0,False,PENDING,
+CSI 500,Broad Market,510500,中证500ETF南方,5108268367.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+CSI 500,Broad Market,159922,中证500ETF嘉实,860817494.048,2.0,False,PENDING,
+CSI 500,Broad Market,512500,中证500ETF华夏,628415499.0,3.0,False,PENDING,
+CSI 500,Broad Market,510580,中证500ETF易方达,290432148.0,4.0,False,PENDING,
+CSI 500,Broad Market,510510,中证500ETF广发,78449669.0,5.0,False,PENDING,
+CSI 1000,Broad Market,512100,中证1000ETF南方,4762263538.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+CSI 1000,Broad Market,159845,中证1000ETF华夏,3790686106.077,2.0,False,PENDING,
+CSI 1000,Broad Market,560010,中证1000ETF广发,1064160326.0,3.0,False,PENDING,
+CSI 1000,Broad Market,159633,中证1000ETF易方达,1042332753.331,4.0,False,PENDING,
+CSI 1000,Broad Market,159629,中证1000ETF富国,411772907.767,5.0,False,PENDING,
+ChiNext,Broad Market,159915,创业板ETF易方达,5537244233.11,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+ChiNext,Broad Market,159949,创业板50ETF华安,2005151882.265,2.0,False,PENDING,
+ChiNext,Broad Market,159363,创业板人工智能ETF华宝,1372012058.051,3.0,False,PENDING,
+ChiNext,Broad Market,159967,创业板成长ETF华夏,1001689198.75,4.0,False,PENDING,
+ChiNext,Broad Market,159381,创业板人工智能ETF华夏,545397442.2,5.0,False,PENDING,
+STAR 50,Broad Market,588000,科创50ETF华夏,7085678088.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+STAR 50,Broad Market,588080,科创50ETF易方达,2253190983.0,2.0,False,PENDING,
+STAR 50,Broad Market,588060,科创50ETF广发,534812927.0,3.0,False,PENDING,
+STAR 50,Broad Market,588050,科创50ETF工银,471463108.0,4.0,False,PENDING,
+STAR 50,Broad Market,588090,科创50ETF华泰柏瑞,218982024.0,5.0,False,PENDING,
+Artificial Intelligence,Technology,159363,创业板人工智能ETF华宝,1372012058.051,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Artificial Intelligence,Technology,159819,人工智能ETF易方达,680601422.875,2.0,False,PENDING,
+Artificial Intelligence,Technology,159381,创业板人工智能ETF华夏,545397442.2,3.0,False,PENDING,
+Artificial Intelligence,Technology,159382,创业板人工智能ETF南方,527187377.84,4.0,False,PENDING,
+Artificial Intelligence,Technology,515980,人工智能ETF华富,423084483.0,5.0,False,PENDING,
+Communication,Technology,515880,通信ETF国泰,3121516146.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Communication,Technology,159131,港股通信息技术ETF华宝,2147284492.5,2.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Communication,Technology,515050,通信ETF华夏,1356397758.0,3.0,False,PENDING,
+Communication,Technology,526000,港股通信息技术ETF华夏,715003150.0,4.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Communication,Technology,159196,港股通信息技术ETF易方达,527884942.7,5.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Semiconductor,Technology,513310,中韩半导体ETF华泰柏瑞,8015771338.0,1.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Semiconductor,Technology,159516,半导体设备ETF国泰,6709754485.757,2.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Semiconductor,Technology,588170,科创半导体ETF华夏,6136260547.0,3.0,False,PENDING,
+Semiconductor,Technology,588200,科创芯片ETF嘉实,5644370929.0,4.0,False,PENDING,
+Semiconductor,Technology,159558,半导体设备ETF易方达,2380833736.744,5.0,False,PENDING,
+Robot,Technology,159530,机器人ETF易方达,1145083791.478,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Robot,Technology,562500,机器人ETF华夏,881690793.0,2.0,False,PENDING,
+Robot,Technology,159272,机器人ETF富国,384338577.506,3.0,False,PENDING,
+Robot,Technology,159770,机器人ETF天弘,216469900.925,4.0,False,PENDING,
+Robot,Technology,159278,机器人ETF鹏华,199600272.4,5.0,False,PENDING,
+Computer,Technology,159998,计算机ETF天弘,148096905.2,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Computer,Technology,512720,计算机ETF国泰,36430402.0,2.0,False,PENDING,
+Computer,Technology,159586,计算机ETF南方,13461491.4,3.0,False,PENDING,
+Gold,Commodity Cyclical,518880,黄金ETF华安,1543384107.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Gold,Commodity Cyclical,518800,黄金ETF国泰,436559305.0,2.0,False,PENDING,
+Gold,Commodity Cyclical,159934,黄金ETF易方达,398314743.846,3.0,False,PENDING,
+Gold,Commodity Cyclical,159937,黄金ETF博时,347071937.9,4.0,False,PENDING,
+Gold,Commodity Cyclical,517520,黄金股ETF永赢,221740289.0,5.0,False,PENDING,
+Nonferrous Metals,Commodity Cyclical,512400,有色金属ETF南方,576684767.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Nonferrous Metals,Commodity Cyclical,560860,工业有色ETF万家,244809138.0,2.0,False,PENDING,
+Nonferrous Metals,Commodity Cyclical,159980,有色ETF大成,158280539.2,3.0,False,PENDING,
+Nonferrous Metals,Commodity Cyclical,516650,有色金属ETF华夏,135890095.0,4.0,False,PENDING,
+Nonferrous Metals,Commodity Cyclical,159652,有色ETF汇添富,131522131.996,5.0,False,PENDING,
+Rare Earth,Commodity Cyclical,516150,稀土ETF嘉实,191799771.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Rare Earth,Commodity Cyclical,159713,稀土ETF富国,107169351.059,2.0,False,PENDING,
+Rare Earth,Commodity Cyclical,516780,稀土ETF华泰柏瑞,102350555.0,3.0,False,PENDING,
+Rare Earth,Commodity Cyclical,159715,稀土ETF易方达,91745184.5,4.0,False,PENDING,
+Coal,Commodity Cyclical,515220,煤炭ETF国泰,472707932.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Dividend,Defensive Value,512890,红利低波ETF华泰柏瑞,876890691.0,1.0,False,PENDING,
+Dividend,Defensive Value,510880,红利ETF华泰柏瑞,656349892.0,2.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Dividend,Defensive Value,513630,港股低波红利ETF摩根,351330028.0,3.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Dividend,Defensive Value,515180,红利ETF易方达,248729074.0,4.0,False,PENDING,
+Dividend,Defensive Value,515080,中证红利ETF招商,247497952.0,5.0,False,PENDING,
+Low Volatility,Defensive Value,512890,红利低波ETF华泰柏瑞,876890691.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Low Volatility,Defensive Value,513630,港股低波红利ETF摩根,351330028.0,2.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Low Volatility,Defensive Value,563020,红利低波ETF易方达,205589588.0,3.0,False,PENDING,
+Low Volatility,Defensive Value,159545,恒生红利低波ETF易方达,199857404.176,4.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Low Volatility,Defensive Value,515450,红利低波50ETF南方,150447627.0,5.0,False,PENDING,
+Bank,Defensive Value,512800,银行ETF华宝,830313969.0,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Bank,Defensive Value,515020,银行ETF华夏,116557712.0,2.0,False,PENDING,
+Bank,Defensive Value,516310,银行ETF易方达,111261928.0,3.0,False,PENDING,
+Bank,Defensive Value,512700,银行ETF南方,98154303.0,4.0,False,PENDING,
+Bank,Defensive Value,512820,银行ETF汇添富,85651054.0,5.0,False,PENDING,
+Power Utilities,Defensive Value,159611,电力ETF广发,290271774.61,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Power Utilities,Defensive Value,159067,绿色电力ETF鹏华,67118969.682,2.0,False,PENDING,
+Power Utilities,Defensive Value,561560,电力ETF华泰柏瑞,43839138.0,3.0,False,PENDING,
+Power Utilities,Defensive Value,159625,绿色电力ETF嘉实,40519180.9,4.0,False,PENDING,
+Power Utilities,Defensive Value,159146,电力ETF华宝,32210921.9,5.0,False,PENDING,
+Innovative Drug,Healthcare Consumer,513120,港股创新药ETF广发,7556920117.0,1.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Innovative Drug,Healthcare Consumer,159570,港股通创新药ETF汇添富,3104943655.768,2.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Innovative Drug,Healthcare Consumer,520500,恒生创新药ETF华泰柏瑞,2181655875.0,3.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Innovative Drug,Healthcare Consumer,159567,港股创新药ETF银华,1939319524.513,4.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Innovative Drug,Healthcare Consumer,159316,港股通创新药ETF易方达,1210178538.0,5.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Healthcare,Healthcare Consumer,159892,恒生医药ETF华夏,1416487936.3,1.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Healthcare,Healthcare Consumer,159506,港股通创新药医疗ETF富国,907920956.6,2.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Healthcare,Healthcare Consumer,513060,恒生医疗ETF博时,704035804.0,3.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Healthcare,Healthcare Consumer,512170,医疗ETF华宝,578232564.0,4.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Healthcare,Healthcare Consumer,512010,医药ETF易方达,413749157.0,5.0,False,PENDING,
+Consumer,Healthcare Consumer,159732,消费电子ETF华夏,495472324.726,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Consumer,Healthcare Consumer,159928,消费ETF汇添富,313982960.551,2.0,False,PENDING,
+Consumer,Healthcare Consumer,513070,港股通消费ETF易方达,209241906.0,3.0,False,REJECTED,Cross-border exposure excluded from domestic ETF universe
+Consumer,Healthcare Consumer,562950,消费电子ETF易方达,113903890.0,4.0,False,PENDING,
+Consumer,Healthcare Consumer,515170,食品饮料ETF华夏,77045041.0,5.0,False,PENDING,
+Money Market,Cash Fixed Income,159001,货币ETF易方达,349110233.888,1.0,True,APPROVED,Automatically selected after duplicate and exposure checks
+Money Market,Cash Fixed Income,511660,货币ETF建信,229318047.0,2.0,False,PENDING,
+Money Market,Cash Fixed Income,511700,货币ETF平安,33820062.0,3.0,False,PENDING,
+Money Market,Cash Fixed Income,511620,货币ETF国泰,10893483.0,4.0,False,PENDING,
+Money Market,Cash Fixed Income,511810,货币ETF南方,10725702.0,5.0,False,PENDING,
+Short Bond,Cash Fixed Income,,,,,False,PENDING,
+Government Bond,Cash Fixed Income,,,,,False,PENDING,
