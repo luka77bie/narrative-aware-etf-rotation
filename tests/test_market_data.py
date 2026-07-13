@@ -62,3 +62,61 @@ def test_missing_local_price_file_raises_error() -> None:
 
     with pytest.raises(FileNotFoundError):
         load_local_price_data("999999")
+
+
+def test_get_price_data_uses_sample_when_offline(
+    tmp_path: Path,
+) -> None:
+    from src.data.market_data import get_price_data
+
+    data, source = get_price_data(
+        ticker="510300",
+        start_date="20240101",
+        cache_directory=tmp_path / "empty_cache",
+        sample_directory="data/sample",
+        use_online=False,
+    )
+
+    assert not data.empty
+    assert source == "sample_csv"
+
+
+def test_get_price_data_uses_raw_cache_before_sample(
+    tmp_path: Path,
+) -> None:
+    from src.data.market_data import get_price_data
+
+    cache_directory = tmp_path / "cache"
+    cache_directory.mkdir()
+
+    sample_data = pd.read_csv("data/sample/510300.csv")
+    sample_data.to_csv(
+        cache_directory / "510300.csv",
+        index=False,
+    )
+
+    data, source = get_price_data(
+        ticker="510300",
+        start_date="20240101",
+        cache_directory=cache_directory,
+        sample_directory="data/sample",
+        use_online=False,
+    )
+
+    assert not data.empty
+    assert source == "raw_cache"
+
+
+def test_get_price_data_raises_when_all_sources_fail(
+    tmp_path: Path,
+) -> None:
+    from src.data.market_data import get_price_data
+
+    with pytest.raises(RuntimeError, match="All data sources failed"):
+        get_price_data(
+            ticker="999999",
+            start_date="20240101",
+            cache_directory=tmp_path / "cache",
+            sample_directory=tmp_path / "sample",
+            use_online=False,
+        )
