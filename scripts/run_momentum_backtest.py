@@ -11,6 +11,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 
 from src.backtest.engine import (
+    calculate_performance_metrics,
     run_monthly_top_n_backtest,
 )
 from src.data.market_data import (
@@ -155,6 +156,26 @@ def main() -> int:
         returns["net_nav"] = (
             1.0 + returns["net_return"]
         ).cumprod()
+
+        recomputed_metrics = calculate_performance_metrics(
+            returns["net_return"]
+        )
+
+        metrics = pd.DataFrame(
+            [
+                {
+                    **recomputed_metrics,
+                    "top_n": 3,
+                    "transaction_cost_rate": 0.001,
+                    "rebalance_count": len(rebalances),
+                    "average_turnover": (
+                        rebalances["turnover"].mean()
+                        if not rebalances.empty
+                        else 0.0
+                    ),
+                }
+            ]
+        )
 
     returns.to_csv(
         OUTPUT_DIRECTORY
