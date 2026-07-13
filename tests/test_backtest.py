@@ -153,6 +153,7 @@ def test_new_weights_do_not_capture_execution_day_return() -> None:
         scored_signals=signals,
         top_n=1,
         transaction_cost_rate=0.0,
+        minimum_signal_assets=1,
     )
 
     rebalances = result["rebalances"]
@@ -169,3 +170,40 @@ def test_new_weights_do_not_capture_execution_day_return() -> None:
         ]
         == 0.0
     )
+
+
+def test_backtest_skips_dates_with_insufficient_assets() -> None:
+    from src.backtest.engine import (
+        run_monthly_top_n_backtest,
+    )
+
+    dates = pd.bdate_range(
+        "2024-01-01",
+        "2024-03-15",
+    )
+
+    prices = pd.DataFrame(
+        {
+            "date": dates,
+            "ticker": ["A"] * len(dates),
+            "adjusted_close": [
+                100.0 + index
+                for index in range(len(dates))
+            ],
+        }
+    )
+
+    signals = prices.copy()
+    signals["mom_20"] = 0.10
+    signals["mom_60"] = 0.20
+    signals["momentum_score"] = 1.0
+
+    result = run_monthly_top_n_backtest(
+        prices=prices,
+        scored_signals=signals,
+        top_n=1,
+        transaction_cost_rate=0.0,
+        minimum_signal_assets=2,
+    )
+
+    assert result["rebalances"].empty

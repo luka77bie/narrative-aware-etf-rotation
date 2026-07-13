@@ -133,6 +133,7 @@ def main() -> int:
         scored_signals=signals,
         top_n=3,
         transaction_cost_rate=0.001,
+        minimum_signal_assets=10,
     )
 
     returns = result["returns"].copy()

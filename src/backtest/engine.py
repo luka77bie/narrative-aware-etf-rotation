@@ -185,6 +185,7 @@ def run_monthly_top_n_backtest(
     scored_signals: pd.DataFrame,
     top_n: int = 3,
     transaction_cost_rate: float = 0.001,
+    minimum_signal_assets: int = 10,
 ) -> Dict[str, pd.DataFrame]:
     """
     Run a monthly Top-N equal-weight momentum backtest.
@@ -237,7 +238,7 @@ def run_monthly_top_n_backtest(
             ]
         )
 
-        if cross_section.empty:
+        if len(cross_section) < minimum_signal_assets:
             continue
 
         selected = select_top_n_equal_weight(
