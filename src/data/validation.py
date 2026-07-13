@@ -81,6 +81,12 @@ def validate_price_data(
         price_column="adjusted_close",
     )
 
+    stale_price_ratio = (
+        stale_price_days / observations
+        if observations > 0
+        else 0.0
+    )
+
     source = (
         str(data["source"].iloc[0])
         if not data.empty
@@ -110,9 +116,10 @@ def validate_price_data(
             f"Zero-volume days: {zero_volume_days}"
         )
 
-    if stale_price_days > 5:
+    if stale_price_ratio > 0.05:
         messages.append(
-            f"High stale-price count: {stale_price_days}"
+            f"High stale-price ratio: "
+            f"{stale_price_ratio:.2%}"
         )
 
     if missing_close > 0 or duplicate_dates > 0:
@@ -121,7 +128,7 @@ def validate_price_data(
     elif (
         observations < min_history_days
         or zero_volume_days > 0
-        or stale_price_days > 5
+        or stale_price_ratio > 0.05
         or source == "sample_csv"
     ):
         status = "WARNING"
@@ -146,6 +153,7 @@ def validate_price_data(
         "duplicate_dates": duplicate_dates,
         "zero_volume_days": zero_volume_days,
         "stale_price_days": stale_price_days,
+        "stale_price_ratio": round(stale_price_ratio, 6),
         "min_history_days": min_history_days,
         "source": source,
         "status": status,

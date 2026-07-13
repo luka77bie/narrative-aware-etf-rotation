@@ -97,3 +97,48 @@ def test_missing_adjusted_close_fails() -> None:
     )
 
     assert result["status"] == "FAIL"
+
+
+def test_low_stale_price_ratio_passes() -> None:
+    dates = pd.date_range("2024-01-01", periods=100)
+
+    data = pd.DataFrame(
+        {
+            "date": dates,
+            "ticker": ["510300"] * 100,
+            "close": [3.0 + i * 0.01 for i in range(100)],
+            "adjusted_close": [
+                3.0 + i * 0.01 for i in range(100)
+            ],
+            "volume": [1000] * 100,
+            "source": ["raw_cache"] * 100,
+        }
+    )
+
+    data.loc[50, "adjusted_close"] = data.loc[
+        49, "adjusted_close"
+    ]
+
+    result = validate_price_data(
+        data=data,
+        ticker="510300",
+        min_history_days=50,
+    )
+
+    assert result["status"] == "PASS"
+    assert result["stale_price_ratio"] == 0.01
+
+
+def test_high_stale_price_ratio_warns() -> None:
+    data = make_valid_data()
+
+    data.loc[1, "adjusted_close"] = 3.40
+    data.loc[2, "adjusted_close"] = 3.40
+
+    result = validate_price_data(
+        data=data,
+        ticker="510300",
+        min_history_days=3,
+    )
+
+    assert result["status"] == "WARNING"
