@@ -1,1 +1,4 @@
 ticker,name,exchange,primary_theme,secondary_theme,style,benchmark_index,inception_date,active_from,active_to,min_history_days,include
+510300,沪深300ETF,SSE,Broad Market,Large Cap,Core,沪深300,2012-05-04,2012-05-28,,252,true
+512660,军工ETF,SSE,Technology,Defence,Growth,中证军工指数,2016-07-26,2016-08-08,,252,false
+518880,黄金ETF,SSE,Commodity,Gold,Defensive,黄金现货合约,2013-07-18,2013-07-29,,252,true
