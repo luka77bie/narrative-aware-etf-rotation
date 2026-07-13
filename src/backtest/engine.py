@@ -282,6 +282,22 @@ def run_monthly_top_n_backtest(
     holdings_rows = []
 
     for date in trading_dates:
+        # Today's return is earned using the weights held
+        # before today's close. Rebalancing at today's close
+        # affects returns from the next trading day onward.
+        daily_return = 0.0
+
+        for ticker, weight in current_weights.items():
+            asset_return = daily_returns.loc[
+                date,
+                ticker,
+            ]
+
+            if pd.notna(asset_return):
+                daily_return += (
+                    weight * asset_return
+                )
+
         transaction_cost = 0.0
 
         if date in target_weights_by_execution_date:
@@ -302,19 +318,6 @@ def run_monthly_top_n_backtest(
             )
 
             current_weights = new_weights
-
-        daily_return = 0.0
-
-        for ticker, weight in current_weights.items():
-            asset_return = daily_returns.loc[
-                date,
-                ticker,
-            ]
-
-            if pd.notna(asset_return):
-                daily_return += (
-                    weight * asset_return
-                )
 
         net_return = (
             daily_return - transaction_cost
