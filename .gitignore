@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Market data
+data/raw/*
+data/processed/*
+outputs/*
+
+# Keep directories
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!outputs/.gitkeep
+
+# Local files
+.env
+.DS_Store
