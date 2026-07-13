@@ -61,10 +61,19 @@ def calculate_rolling_risk_metrics(
 
         return group
 
-    return (
-        frame.groupby("ticker", group_keys=False)
-        .apply(add_group_metrics)
-        .reset_index(drop=True)
+    groups = []
+
+    for _, group in frame.groupby(
+        "ticker",
+        sort=False,
+    ):
+        groups.append(
+            add_group_metrics(group.copy())
+        )
+
+    return pd.concat(
+        groups,
+        ignore_index=True,
     )
 
 
