@@ -104,3 +104,27 @@ def load_etf_universe(
         universe = universe.loc[universe["include"]].copy()
 
     return universe.reset_index(drop=True)
+
+
+def load_local_price_data(
+    ticker: str,
+    data_directory: "Union[str, Path]" = "data/sample",
+) -> pd.DataFrame:
+    """Load one ETF from a local CSV fallback file."""
+    from src.data.preprocessing import standardise_price_data
+
+    ticker = str(ticker).strip()
+    file_path = Path(data_directory) / f"{ticker}.csv"
+
+    if not file_path.exists():
+        raise FileNotFoundError(
+            f"Local price file not found for ticker {ticker}: {file_path}"
+        )
+
+    raw_data = pd.read_csv(file_path)
+
+    return standardise_price_data(
+        data=raw_data,
+        ticker=ticker,
+        source="local_csv",
+    )

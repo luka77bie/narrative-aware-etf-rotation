@@ -44,3 +44,21 @@ def test_duplicate_tickers_raise_error(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="Duplicate ETF tickers"):
         load_etf_universe(test_file)
+
+
+def test_load_local_price_data() -> None:
+    from src.data.market_data import load_local_price_data
+
+    data = load_local_price_data("510300")
+
+    assert not data.empty
+    assert data["ticker"].eq("510300").all()
+    assert data["source"].eq("local_csv").all()
+    assert data["date"].is_monotonic_increasing
+
+
+def test_missing_local_price_file_raises_error() -> None:
+    from src.data.market_data import load_local_price_data
+
+    with pytest.raises(FileNotFoundError):
+        load_local_price_data("999999")
