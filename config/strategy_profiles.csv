@@ -1,0 +1,8 @@
+profile,signal,top_n,rebalance,transaction_cost_rate,minimum_signal_assets,volatility_target,status,purpose
+baseline,mom60,3,monthly,0.001,10,,selected,Primary research baseline
+defensive_10pct,mom60,3,monthly,0.001,10,0.10,selected,Lower-drawdown defensive variant
+vol_target_15pct,mom60,3,monthly,0.001,10,0.15,rejected,Lower CAGR and Calmar than baseline
+vol_target_20pct,mom60,3,monthly,0.001,10,0.20,rejected,Limited drawdown improvement
+risk_penalty,mom60,3,monthly,0.001,10,,rejected,Worse Sharpe CAGR and turnover
+slot_cash_filter,mom60,3,monthly,0.001,10,,rejected,Worse drawdown and turnover
+market_regime,mom60,3,monthly,0.001,10,,rejected,Worse CAGR Sharpe and Calmar
