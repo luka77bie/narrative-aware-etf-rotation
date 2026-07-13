@@ -207,3 +207,59 @@ def test_backtest_skips_dates_with_insufficient_assets() -> None:
     )
 
     assert result["rebalances"].empty
+
+
+def test_cash_filter_allocates_unused_slots_to_cash() -> None:
+    from src.portfolio.construction import (
+        select_top_n_with_cash_filter,
+    )
+
+    ranking = pd.DataFrame(
+        {
+            "ticker": ["A", "B", "C"],
+            "mom_60": [0.20, 0.10, -0.05],
+            "momentum_score": [2.0, 1.0, 0.5],
+        }
+    )
+
+    result = select_top_n_with_cash_filter(
+        ranking=ranking,
+        top_n=3,
+        cash_ticker="CASH",
+    )
+
+    weights = dict(
+        zip(
+            result["ticker"],
+            result["weight"],
+        )
+    )
+
+    assert weights["A"] == 1 / 3
+    assert weights["B"] == 1 / 3
+    assert weights["CASH"] == 1 / 3
+    assert abs(result["weight"].sum() - 1.0) < 1e-12
+
+
+def test_cash_filter_uses_full_cash_when_all_negative() -> None:
+    from src.portfolio.construction import (
+        select_top_n_with_cash_filter,
+    )
+
+    ranking = pd.DataFrame(
+        {
+            "ticker": ["A", "B"],
+            "mom_60": [-0.10, -0.20],
+            "momentum_score": [1.0, 0.5],
+        }
+    )
+
+    result = select_top_n_with_cash_filter(
+        ranking=ranking,
+        top_n=3,
+        cash_ticker="CASH",
+    )
+
+    assert len(result) == 1
+    assert result.iloc[0]["ticker"] == "CASH"
+    assert result.iloc[0]["weight"] == 1.0
