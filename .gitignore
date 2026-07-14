@@ -18,3 +18,7 @@ outputs/*
 # Local files
 .env
 .DS_Store
+
+# Historical news datasets
+data/raw/news/*
+!data/raw/news/.gitkeep
