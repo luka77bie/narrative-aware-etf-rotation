@@ -1,0 +1,8 @@
+profile,momentum_weight,proxy_weight,policy_weight,status,research_use,notes
+mom60_baseline,1.0,0.0,0.0,selected,formal,Primary validated quantitative baseline
+market_attention_50pct,0.5,0.5,0.0,exploratory,formal,Improves full sample and 2022-2023 but not stable across all subperiods
+market_attention_10pct,0.9,0.1,0.0,rejected,formal,Worse CAGR Sharpe drawdown and Calmar
+market_attention_20pct,0.8,0.2,0.0,rejected,formal,Worse CAGR Sharpe and Calmar
+market_attention_30pct,0.7,0.3,0.0,rejected,formal,Worse full-sample risk-adjusted performance
+policy_narrative_v1,0.0,0.0,1.0,validation_only,prohibited,Source not approved and records not point-in-time historical archive
+narrative_v2,0.0,0.7,0.3,validation_only,prohibited,Contains validation-only policy metadata
