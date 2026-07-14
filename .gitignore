@@ -22,3 +22,7 @@ outputs/*
 # Historical news datasets
 data/raw/news/*
 !data/raw/news/.gitkeep
+
+# Processed historical news features
+data/processed/news/*
+!data/processed/news/.gitkeep
