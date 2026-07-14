@@ -287,6 +287,12 @@ def main() -> int:
         returns = result["returns"].copy()
         rebalances = result["rebalances"].copy()
 
+        if rebalances.empty:
+            raise ValueError(
+                f"No rebalances generated for "
+                f"proxy weight {proxy_weight:.0%}."
+            )
+
         if "date" not in returns.columns:
             index_name = (
                 returns.index.name
@@ -320,8 +326,33 @@ def main() -> int:
                 f"proxy weight {proxy_weight:.0%}."
             )
 
+        execution_date_column = (
+            "execution_date"
+            if "execution_date" in rebalances.columns
+            else "date"
+        )
+
+        first_execution_date = pd.to_datetime(
+            rebalances[execution_date_column],
+            errors="coerce",
+        ).min()
+
+        if pd.isna(first_execution_date):
+            raise ValueError(
+                "Unable to determine first execution date."
+            )
+
+        evaluation_returns = returns.loc[
+            returns["date"] >= first_execution_date
+        ].copy()
+
+        if evaluation_returns.empty:
+            raise ValueError(
+                "No returns remain after first execution date."
+            )
+
         metrics = calculate_performance_metrics(
-            returns["net_return"]
+            evaluation_returns["net_return"]
         )
 
         average_turnover = (
@@ -342,21 +373,13 @@ def main() -> int:
                     average_turnover
                 ),
                 "backtest_start_date": (
-                    pd.to_datetime(
-                        returns["date"]
-                        if "date" in returns.columns
-                        else returns.index
-                    ).min()
+                    evaluation_returns["date"].min()
                 ),
                 "backtest_end_date": (
-                    pd.to_datetime(
-                        returns["date"]
-                        if "date" in returns.columns
-                        else returns.index
-                    ).max()
+                    evaluation_returns["date"].max()
                 ),
                 "return_observations": len(
-                    returns
+                    evaluation_returns
                 ),
                 "rebalance_count": len(
                     rebalances
@@ -375,7 +398,7 @@ def main() -> int:
             index=False,
         )
 
-        returns.to_csv(
+        evaluation_returns.to_csv(
             OUTPUT_DIRECTORY
             / f"{prefix}_returns.csv",
             index=False,
