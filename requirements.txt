@@ -1,0 +1,2 @@
+matplotlib>=3.7,<4
+markdown>=3.4,<4

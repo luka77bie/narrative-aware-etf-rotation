@@ -310,6 +310,24 @@ excluded from formal historical performance claims.
 
 {render_fold_table(folds)}
 
+## Visual Results
+
+### Walk-Forward Out-of-Sample NAV
+
+![Walk-Forward OOS NAV](charts/nav_comparison.png)
+
+### Walk-Forward Out-of-Sample Drawdown
+
+![Walk-Forward OOS Drawdown](charts/drawdown_comparison.png)
+
+### Sharpe Ratio by Fold
+
+![Walk-Forward Sharpe Ratio by Fold](charts/walk_forward_sharpe.png)
+
+### CAGR by Subperiod
+
+![CAGR by Subperiod](charts/subperiod_cagr.png)
+
 ## Interpretation
 
 The market-attention proxy showed useful defensive behaviour during
