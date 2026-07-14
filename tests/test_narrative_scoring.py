@@ -114,3 +114,31 @@ def test_duplicate_theme_dates_removed() -> None:
     assert not result.duplicated(
         subset=["date", "theme_id"]
     ).any()
+
+
+def test_latest_date_has_cross_sectional_ranks() -> None:
+    features = engineer_narrative_features(
+        make_narrative_data(),
+        lookback=7,
+    )
+
+    scored = calculate_narrative_scores(
+        features
+    )
+
+    complete = scored.dropna(
+        subset=[
+            "news_growth",
+            "attention_change",
+            "narrative_score",
+        ]
+    )
+
+    latest_date = complete["date"].max()
+
+    latest = complete.loc[
+        complete["date"] == latest_date
+    ]
+
+    assert latest["narrative_rank"].notna().all()
+    assert latest["theme_id"].nunique() == 3
