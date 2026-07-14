@@ -1,0 +1,9 @@
+{
+  "published_at": "publish_time",
+  "url": "article_url",
+  "title": "headline",
+  "content": "body",
+  "theme_id": "theme_id",
+  "match_method": "match_method",
+  "is_policy_source": "is_policy_source"
+}

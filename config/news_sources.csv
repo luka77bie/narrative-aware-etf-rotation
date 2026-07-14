@@ -1,0 +1,4 @@
+source_id,source_name,source_category,base_domain,language,requires_license,enabled,notes
+example_government,Example Government,official_government,gov.example.cn,zh,false,false,Placeholder only; replace with real approved source
+example_exchange,Example Exchange,exchange,exchange.example.cn,zh,false,false,Placeholder only; replace with real approved source
+example_media,Example Financial Media,financial_media,media.example.com,zh,true,false,Placeholder only; requires licensed historical export
