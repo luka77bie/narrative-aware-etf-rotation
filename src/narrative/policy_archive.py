@@ -293,13 +293,49 @@ def aggregate_daily_policy_features(
 
     frame = validated_policy.copy()
 
-    frame["date"] = (
-        pd.to_datetime(
-            frame["published_at"],
-            utc=True,
-        )
+    published = pd.to_datetime(
+        frame["published_at"],
+        errors="coerce",
+        utc=True,
+    )
+
+    retrieved = pd.to_datetime(
+        frame["retrieved_at"],
+        errors="coerce",
+        utc=True,
+    )
+
+    frame["available_at"] = pd.concat(
+        [
+            published,
+            retrieved,
+        ],
+        axis=1,
+    ).max(axis=1)
+
+    available_shanghai = (
+        frame["available_at"]
         .dt.tz_convert("Asia/Shanghai")
-        .dt.normalize()
+    )
+
+    local_day = available_shanghai.dt.normalize()
+
+    market_close = (
+        local_day
+        + pd.Timedelta(hours=15)
+    )
+
+    after_market_close = (
+        available_shanghai > market_close
+    )
+
+    effective_day = local_day.where(
+        ~after_market_close,
+        local_day + pd.Timedelta(days=1),
+    )
+
+    frame["date"] = (
+        effective_day
         .dt.tz_localize(None)
     )
 
