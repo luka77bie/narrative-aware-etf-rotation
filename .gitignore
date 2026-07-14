@@ -33,3 +33,9 @@ data/raw/policy/*
 !data/raw/policy/.gitkeep
 data/processed/policy/*
 !data/processed/policy/.gitkeep
+
+# Preserve official-policy directory structure
+!data/raw/policy/
+!data/raw/policy/.gitkeep
+!data/processed/policy/
+!data/processed/policy/.gitkeep
