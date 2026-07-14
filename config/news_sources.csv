@@ -1,6 +1,7 @@
 source_id,source_name,source_category,base_domain,language,data_access_method,requires_license,license_status,robots_reviewed,terms_reviewed,historical_start_date,enabled,approved_for_research,notes
-gov_cn,中国政府网,official_government,gov.cn,zh,manual_export,false,public_access,false,false,2005-10-01,false,false,Official policy source; enable only after access and terms review
-sse,上海证券交易所,exchange,sse.com.cn,zh,manual_export,false,public_access,false,false,,false,false,Official exchange source; announcements require separate thematic relevance rules
-szse,深圳证券交易所,exchange,szse.cn,zh,manual_export,false,public_access,false,false,,false,false,Official exchange source; announcements require separate thematic relevance rules
-cninfo,巨潮资讯网,exchange,cninfo.com.cn,zh,manual_export,false,public_access,false,false,,false,false,Official disclosure platform; verify permitted historical export method
-licensed_media,Licensed Financial Media,financial_media,,zh,licensed_export,true,not_acquired,false,false,,false,false,Placeholder for a licensed historical news export
+gov_cn,中国政府网,official_government,gov.cn,zh,manual_export,False,public_access,False,False,2005-10-01,False,False,Official policy source; enable only after access and terms review
+sse,上海证券交易所,exchange,sse.com.cn,zh,manual_export,False,public_access,False,False,,False,False,Official exchange source; announcements require separate thematic relevance rules
+szse,深圳证券交易所,exchange,szse.cn,zh,manual_export,False,public_access,False,False,,False,False,Official exchange source; announcements require separate thematic relevance rules
+cninfo,巨潮资讯网,exchange,cninfo.com.cn,zh,manual_export,False,public_access,False,False,,False,False,Official disclosure platform; verify permitted historical export method
+licensed_media,Licensed Financial Media,financial_media,,zh,licensed_export,True,not_acquired,False,False,,False,False,Placeholder for a licensed historical news export
+state_council_gazette,中华人民共和国国务院公报,official_government,gov.cn,zh,manual_export,False,unknown,False,False,1954-01-01,False,False,"Official State Council Gazette archive. Manual metadata collection only until terms, robots policy, storage and text-analysis permissions are documented."
