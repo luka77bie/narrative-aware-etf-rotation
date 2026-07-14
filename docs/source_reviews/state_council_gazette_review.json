@@ -1,0 +1,13 @@
+{
+  "source_id": "state_council_gazette",
+  "reviewed_at": "2026-07-14T00:00:00Z",
+  "reviewer": "Jiacheng Bie",
+  "access_method": "manual_export",
+  "terms_url": "https://www.gov.cn/",
+  "robots_url": "https://www.gov.cn/robots.txt",
+  "research_use_permitted": false,
+  "local_storage_permitted": false,
+  "text_analysis_permitted": false,
+  "historical_export_available": false,
+  "review_notes": "The source is an official government publication, but automated access, bulk historical export, local storage and NLP research permissions have not yet been verified. Keep disabled until documentary evidence is available."
+}

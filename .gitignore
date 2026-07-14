@@ -16,5 +16,26 @@ outputs/*
 !outputs/.gitkeep
 
 # Local files
-.env
 .DS_Store
+
+# Historical news datasets
+data/raw/news/*
+!data/raw/news/.gitkeep
+
+# Processed historical news features
+data/processed/news/*
+!data/processed/news/.gitkeep
+
+
+
+# Raw and processed official policy archives
+data/raw/policy/*
+!data/raw/policy/.gitkeep
+data/processed/policy/*
+!data/processed/policy/.gitkeep
+
+# Preserve official-policy directory structure
+!data/raw/policy/
+!data/raw/policy/.gitkeep
+!data/processed/policy/
+!data/processed/policy/.gitkeep
