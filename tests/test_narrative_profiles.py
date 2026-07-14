@@ -46,3 +46,15 @@ def test_weights_sum_to_one() -> None:
     )
 
     assert total.round(10).eq(1.0).all()
+
+
+def test_oos_rejected_proxy_is_not_selected() -> None:
+    profiles = pd.read_csv(PROFILE_PATH)
+
+    proxy = profiles.loc[
+        profiles["profile"]
+        == "market_attention_50pct"
+    ].iloc[0]
+
+    assert proxy["status"] != "selected"
+    assert proxy["policy_weight"] == 0.0
