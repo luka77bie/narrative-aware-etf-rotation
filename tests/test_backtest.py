@@ -207,3 +207,122 @@ def test_backtest_skips_dates_with_insufficient_assets() -> None:
     )
 
     assert result["rebalances"].empty
+
+
+def test_cash_filter_allocates_unused_slots_to_cash() -> None:
+    from src.portfolio.construction import (
+        select_top_n_with_cash_filter,
+    )
+
+    ranking = pd.DataFrame(
+        {
+            "ticker": ["A", "B", "C"],
+            "mom_60": [0.20, 0.10, -0.05],
+            "momentum_score": [2.0, 1.0, 0.5],
+        }
+    )
+
+    result = select_top_n_with_cash_filter(
+        ranking=ranking,
+        top_n=3,
+        cash_ticker="CASH",
+    )
+
+    weights = dict(
+        zip(
+            result["ticker"],
+            result["weight"],
+        )
+    )
+
+    assert weights["A"] == 1 / 3
+    assert weights["B"] == 1 / 3
+    assert weights["CASH"] == 1 / 3
+    assert abs(result["weight"].sum() - 1.0) < 1e-12
+
+
+def test_cash_filter_uses_full_cash_when_all_negative() -> None:
+    from src.portfolio.construction import (
+        select_top_n_with_cash_filter,
+    )
+
+    ranking = pd.DataFrame(
+        {
+            "ticker": ["A", "B"],
+            "mom_60": [-0.10, -0.20],
+            "momentum_score": [1.0, 0.5],
+        }
+    )
+
+    result = select_top_n_with_cash_filter(
+        ranking=ranking,
+        top_n=3,
+        cash_ticker="CASH",
+    )
+
+    assert len(result) == 1
+    assert result.iloc[0]["ticker"] == "CASH"
+    assert result.iloc[0]["weight"] == 1.0
+
+
+def test_backtest_allocates_to_cash_when_momentum_negative() -> None:
+    from src.backtest.engine import (
+        run_monthly_top_n_backtest,
+    )
+
+    dates = pd.bdate_range(
+        "2024-01-01",
+        "2024-03-15",
+    )
+
+    rows = []
+
+    for ticker, start_price in [
+        ("A", 100.0),
+        ("CASH", 100.0),
+    ]:
+        for index, date in enumerate(dates):
+            rows.append(
+                {
+                    "date": date,
+                    "ticker": ticker,
+                    "adjusted_close": (
+                        start_price
+                        + index * (
+                            -0.1
+                            if ticker == "A"
+                            else 0.01
+                        )
+                    ),
+                }
+            )
+
+    prices = pd.DataFrame(rows)
+
+    signals = pd.DataFrame(
+        {
+            "date": dates,
+            "ticker": ["A"] * len(dates),
+            "mom_20": [-0.05] * len(dates),
+            "mom_60": [-0.10] * len(dates),
+            "momentum_score": [1.0] * len(dates),
+        }
+    )
+
+    result = run_monthly_top_n_backtest(
+        prices=prices,
+        scored_signals=signals,
+        top_n=1,
+        transaction_cost_rate=0.0,
+        minimum_signal_assets=1,
+        use_cash_filter=True,
+        cash_ticker="CASH",
+    )
+
+    rebalances = result["rebalances"]
+
+    assert not rebalances.empty
+    assert (
+        rebalances.iloc[0]["selected_tickers"]
+        == "CASH"
+    )

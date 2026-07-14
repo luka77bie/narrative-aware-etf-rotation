@@ -6,6 +6,7 @@ import pandas as pd
 from src.portfolio.construction import (
     calculate_turnover,
     select_top_n_equal_weight,
+    select_top_n_with_cash_filter,
     weights_to_dict,
 )
 
@@ -186,6 +187,9 @@ def run_monthly_top_n_backtest(
     top_n: int = 3,
     transaction_cost_rate: float = 0.001,
     minimum_signal_assets: int = 10,
+    use_cash_filter: bool = False,
+    cash_ticker: str = "159001",
+    absolute_momentum_column: str = "mom_60",
 ) -> Dict[str, pd.DataFrame]:
     """
     Run a monthly Top-N equal-weight momentum backtest.
@@ -241,10 +245,19 @@ def run_monthly_top_n_backtest(
         if len(cross_section) < minimum_signal_assets:
             continue
 
-        selected = select_top_n_equal_weight(
-            ranking=cross_section,
-            top_n=top_n,
-        )
+        if use_cash_filter:
+            selected = select_top_n_with_cash_filter(
+                ranking=cross_section,
+                top_n=top_n,
+                cash_ticker=cash_ticker,
+                absolute_momentum_column=absolute_momentum_column,
+                score_column="momentum_score",
+            )
+        else:
+            selected = select_top_n_equal_weight(
+                ranking=cross_section,
+                top_n=top_n,
+            )
 
         new_target_weights = weights_to_dict(
             selected

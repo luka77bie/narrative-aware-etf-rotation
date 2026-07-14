@@ -89,3 +89,80 @@ def calculate_turnover(
         )
         for ticker in tickers
     )
+
+
+def select_top_n_with_cash_filter(
+    ranking: pd.DataFrame,
+    top_n: int = 3,
+    cash_ticker: str = "159001",
+    absolute_momentum_column: str = "mom_60",
+    score_column: str = "momentum_score",
+) -> pd.DataFrame:
+    """
+    Select positive-momentum ETFs and allocate unused slots to cash.
+
+    Each of the top_n slots receives 1 / top_n weight.
+    If fewer than top_n ETFs have positive absolute momentum,
+    the remaining weight is assigned to the cash ETF.
+    """
+    required_columns = {
+        "ticker",
+        absolute_momentum_column,
+        score_column,
+    }
+
+    missing = required_columns - set(ranking.columns)
+
+    if missing:
+        raise ValueError(
+            "Ranking is missing columns: "
+            + ", ".join(sorted(missing))
+        )
+
+    if top_n <= 0:
+        raise ValueError("top_n must be positive.")
+
+    eligible = ranking.dropna(
+        subset=[
+            absolute_momentum_column,
+            score_column,
+        ]
+    ).copy()
+
+    eligible = eligible.loc[
+        eligible[absolute_momentum_column] > 0
+    ]
+
+    selected = (
+        eligible.sort_values(
+            [score_column, "ticker"],
+            ascending=[False, True],
+        )
+        .head(top_n)
+        .copy()
+    )
+
+    slot_weight = 1.0 / top_n
+
+    rows = [
+        {
+            "ticker": str(ticker),
+            "weight": slot_weight,
+        }
+        for ticker in selected["ticker"]
+    ]
+
+    unused_slots = top_n - len(selected)
+
+    if unused_slots > 0:
+        rows.append(
+            {
+                "ticker": str(cash_ticker),
+                "weight": unused_slots * slot_weight,
+            }
+        )
+
+    return pd.DataFrame(
+        rows,
+        columns=["ticker", "weight"],
+    )
