@@ -14,9 +14,12 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from src.narrative.ingestion import (
     build_ingestion_manifest,
-    load_source_registry,
     normalise_news_export,
     save_manifest,
+)
+from src.narrative.source_registry import (
+    get_approved_source,
+    load_and_validate_source_registry,
 )
 from src.narrative.provenance import (
     validate_news_provenance,
@@ -79,19 +82,14 @@ def main() -> int:
             f"Column map not found: {map_path}"
         )
 
-    registry = load_source_registry()
+    registry = load_and_validate_source_registry(
+        "config/news_sources.csv"
+    )
 
-    source_rows = registry.loc[
-        registry["source_id"]
-        == args.source_id
-    ]
-
-    if source_rows.empty:
-        raise ValueError(
-            f"Unknown source_id: {args.source_id}"
-        )
-
-    source_record = source_rows.iloc[0]
+    source_record = get_approved_source(
+        registry=registry,
+        source_id=args.source_id,
+    )
 
     column_map = json.loads(
         map_path.read_text(

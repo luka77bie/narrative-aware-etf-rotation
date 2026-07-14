@@ -1,4 +1,6 @@
-source_id,source_name,source_category,base_domain,language,requires_license,enabled,notes
-example_government,Example Government,official_government,gov.example.cn,zh,false,false,Placeholder only; replace with real approved source
-example_exchange,Example Exchange,exchange,exchange.example.cn,zh,false,false,Placeholder only; replace with real approved source
-example_media,Example Financial Media,financial_media,media.example.com,zh,true,false,Placeholder only; requires licensed historical export
+source_id,source_name,source_category,base_domain,language,data_access_method,requires_license,license_status,robots_reviewed,terms_reviewed,historical_start_date,enabled,approved_for_research,notes
+gov_cn,中国政府网,official_government,gov.cn,zh,manual_export,false,public_access,false,false,2005-10-01,false,false,Official policy source; enable only after access and terms review
+sse,上海证券交易所,exchange,sse.com.cn,zh,manual_export,false,public_access,false,false,,false,false,Official exchange source; announcements require separate thematic relevance rules
+szse,深圳证券交易所,exchange,szse.cn,zh,manual_export,false,public_access,false,false,,false,false,Official exchange source; announcements require separate thematic relevance rules
+cninfo,巨潮资讯网,exchange,cninfo.com.cn,zh,manual_export,false,public_access,false,false,,false,false,Official disclosure platform; verify permitted historical export method
+licensed_media,Licensed Financial Media,financial_media,,zh,licensed_export,true,not_acquired,false,false,,false,false,Placeholder for a licensed historical news export
