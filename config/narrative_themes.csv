@@ -1,0 +1,12 @@
+theme_id,theme_name,primary_theme,keywords,mapped_tickers,include
+ai,人工智能,Technology,"人工智能|AI|大模型|算力","159363|515880|159998",true
+semiconductor,半导体,Technology,"半导体|芯片|集成电路","159516",true
+robotics,机器人,Technology,"机器人|具身智能|自动化","159530",true
+gold,黄金,Commodity Cyclical,"黄金|金价|贵金属","518880",true
+nonferrous,有色金属,Commodity Cyclical,"有色金属|铜|铝|稀土","512400|516150",true
+coal,煤炭,Commodity Cyclical,"煤炭|煤价|能源安全","515220",true
+dividend,红利低波,Defensive Value,"红利|高股息|低波动","510880|512890",true
+bank,银行,Defensive Value,"银行|利差|金融","512800",true
+power,电力,Defensive Value,"电力|电网|公用事业","159611",true
+healthcare,医疗,Healthcare Consumer,"医疗|医药|创新药","512170",true
+consumer,消费,Healthcare Consumer,"消费|食品饮料|内需","159732",true
