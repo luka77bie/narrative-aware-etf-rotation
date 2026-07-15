@@ -549,6 +549,49 @@ Planned extensions include:
 
 ---
 
+## Current Allocation Report
+
+The project can generate the latest MOM60 Top-3 model allocation
+from the most recent valid ETF cross-section.
+
+Run:
+
+```bash
+python3 scripts/run_momentum_signal.py
+python3 scripts/generate_current_allocation.py
+```
+
+Open the standalone allocation report on macOS:
+
+```bash
+open outputs/reporting/current_allocation.html
+```
+
+The allocation report contains:
+
+- latest valid market-data date
+- current Top-3 ETF codes and names
+- MOM60 values and momentum scores
+- equal target weights
+- previous target allocation
+- added, removed and retained ETFs
+- estimated one-way turnover
+- stale-data warning
+- next-trading-day execution policy
+
+Generated files:
+
+```text
+outputs/reporting/current_allocation.csv
+outputs/reporting/current_allocation.md
+outputs/reporting/current_allocation.html
+```
+
+The output is a model-generated research signal, not an automatic
+trade instruction or investment recommendation.
+
+---
+
 ## Disclaimer
 
 This repository is for research and educational purposes only.
