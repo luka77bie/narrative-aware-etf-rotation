@@ -42,6 +42,27 @@ PIPELINE_STEPS = [
         ],
     ),
     PipelineStep(
+        name="Generate current allocation report",
+        command=[
+            sys.executable,
+            "scripts/generate_current_allocation.py",
+        ],
+        required_outputs=[
+            Path(
+                "outputs/reporting/"
+                "current_allocation.csv"
+            ),
+            Path(
+                "outputs/reporting/"
+                "current_allocation.md"
+            ),
+            Path(
+                "outputs/reporting/"
+                "current_allocation.html"
+            ),
+        ],
+    ),
+    PipelineStep(
         name="Build market-attention proxy",
         command=[
             sys.executable,

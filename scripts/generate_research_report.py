@@ -42,6 +42,10 @@ FOLD_PATH = Path(
     "outputs/walk_forward_fold_metrics.csv"
 )
 
+CURRENT_ALLOCATION_PATH = Path(
+    "outputs/reporting/current_allocation.md"
+)
+
 
 BASELINE_MODEL = "MOM60"
 CANDIDATE_MODEL = "MOM60 + 50% Proxy"
@@ -206,6 +210,33 @@ def render_fold_table(
     return "\n".join(lines)
 
 
+def load_current_allocation_section() -> str:
+    """
+    Load the current allocation report for inclusion in the
+    main research report.
+
+    The standalone H1 heading is removed because the content
+    is embedded beneath a section heading in the main report.
+    """
+    if not CURRENT_ALLOCATION_PATH.exists():
+        return (
+            "Current allocation output is unavailable. "
+            "Run `python3 "
+            "scripts/generate_current_allocation.py`."
+        )
+
+    text = CURRENT_ALLOCATION_PATH.read_text(
+        encoding="utf-8",
+    ).strip()
+
+    heading = "# Current MOM60 Allocation"
+
+    if text.startswith(heading):
+        text = text[len(heading):].lstrip()
+
+    return text
+
+
 def main() -> int:
     OUTPUT_DIRECTORY.mkdir(
         parents=True,
@@ -216,6 +247,10 @@ def main() -> int:
     robustness = build_robustness_summary()
     walk_forward = build_walk_forward_summary()
     folds = build_fold_summary()
+
+    current_allocation_section = (
+        load_current_allocation_section()
+    )
 
     baseline_full = select_model_row(
         ablation,
@@ -278,6 +313,10 @@ research variant rather than the selected model.
 
 Policy-derived narrative signals remain validation-only and are
 excluded from formal historical performance claims.
+
+## Current Model Allocation
+
+{current_allocation_section}
 
 ## Full-Sample Proxy Ablation
 
