@@ -1,0 +1,108 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.9"
+          - "3.12"
+
+    env:
+      MPLBACKEND: Agg
+      PYTHONUTF8: "1"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Upgrade packaging tools
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements.txt
+
+      - name: Display environment
+        run: |
+          python --version
+          python -m pip --version
+          python -m pip list
+
+      - name: Compile Python sources
+        run: |
+          python -m compileall -q main.py src scripts tests
+
+      - name: Run unit tests
+        run: |
+          python -m pytest -v
+
+      - name: Check pipeline registry
+        run: |
+          python main.py --list-steps
+
+      - name: Verify committed fixtures
+        run: |
+          test -f data/sample/510300.csv
+          test -f data/sample/518880.csv
+          test -f config/etf_universe.csv
+          test -f config/narrative_themes.csv
+
+  reporting-smoke:
+    name: Reporting smoke test
+    runs-on: ubuntu-latest
+
+    env:
+      MPLBACKEND: Agg
+      PYTHONUTF8: "1"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -r requirements.txt
+
+      - name: Run reporting smoke tests
+        run: |
+          python -m pytest -v \
+            tests/test_reporting_summary.py \
+            tests/test_reporting_charts.py \
+            tests/test_main_pipeline.py
