@@ -34,10 +34,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
@@ -59,11 +59,7 @@ jobs:
 
       - name: Compile Python sources
         run: |
-          python -m compileall -q \
-            main.py \
-            src \
-            scripts \
-            tests
+          python -m compileall -q main.py src scripts tests
 
       - name: Run unit tests
         run: |
@@ -73,7 +69,7 @@ jobs:
         run: |
           python main.py --list-steps
 
-      - name: Verify test fixtures are available
+      - name: Verify committed fixtures
         run: |
           test -f data/sample/510300.csv
           test -f data/sample/518880.csv
@@ -90,10 +86,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
@@ -101,10 +97,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade pip setuptools wheel
           python -m pip install -r requirements.txt
 
-      - name: Run reporting tests
+      - name: Run reporting smoke tests
         run: |
           python -m pytest -v \
             tests/test_reporting_summary.py \
