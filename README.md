@@ -1,5 +1,7 @@
 # Narrative-Aware ETF Rotation
 
+[English](README.md) | [简体中文](README.zh-CN.md)
+
 A reproducible quantitative research platform for evaluating momentum,
 risk controls, market-attention signals, and policy narratives across a
 diversified Chinese ETF universe.
