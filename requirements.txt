@@ -6,3 +6,4 @@ yfinance>=0.2.40,<1
 matplotlib>=3.7,<4
 markdown>=3.4,<4
 PyYAML>=6,<7
+akshare>=1.18,<2
